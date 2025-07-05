@@ -1,0 +1,17 @@
+
+component.Navbar
+props
+
+setting prop type to the function
+Navbar.prototype = {
+    title : PropTypes.string,
+    age : PropTypes.number
+}
+if you send a wrong prop type in the props it will give you an error(warrning) in the console
+
+
+Navbar.defaultProps = {
+    title : "Set title here",
+    age : 18
+}
+if by mistake i didnot give props or miss a prop then you these props instead
