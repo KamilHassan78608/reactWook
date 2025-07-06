@@ -1,6 +1,4 @@
 import React from "react"
-import PropTypes from 'prop-types'
-
 
 import './Navbar.css';
 
@@ -23,10 +21,3 @@ export default function Navbar() {
         </>
     );
 }
-
-
-Navbar.defaultProps = {
-    title : "Set title here",
-    age : 18
-}
-
