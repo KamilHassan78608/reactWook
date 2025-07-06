@@ -2,10 +2,21 @@
 import { useState } from 'react';
 import './Notepad.css';
 
-export default function Notepad() {
+export default function Notepad(props) {
+
+    const myStyle = {
+        background: props.mode ? '#1C222D' : 'linear-gradient(135deg, #4f46e5, #3b82f6)',
+        color: 'white'
+    }
+
+    const colorStyle = {
+        background: props.mode ? '#ccc' : 'white',
+        color: props.mode ? 'black' : '#3b82f6',
+    };
+
+    
 
     const [text, setText] = useState("");
-
     const [fontsize, setFontsize] = useState('18');
     const [fontfamily, setFontfamily] = useState('Arial');
     const [fontalign, setFontalign] = useState('Left');
@@ -40,9 +51,14 @@ export default function Notepad() {
         setText(newText);
     }
 
+    const copyText = () => {
+        navigator.clipboard.writeText(text)
+    }
+    
+
     return(
         <>
-        <div className="container">
+        <div className="container" style={myStyle}>
             <div className="head">
             <label>Font Size</label>
             <select onChange={(e) => setFontsize(e.target.value)}>
@@ -96,17 +112,19 @@ export default function Notepad() {
                     textAlign: `${fontalign}`,
                     color: `${fontcolor}`,
                     backgroundColor: `${bgcolor}`
+                    
                 }}
             ></textarea>
             </div>
             <div className='foot'>
-                <button onClick={douper}>Upper Case</button>
-                <button onClick={dolower}>Lower Case</button>
-                <button onClick={titleCase}>Title case</button>
-                <button onClick={clear}>Clear</button>
+                <button onClick={douper} style={colorStyle}>Upper Case</button>
+                <button onClick={dolower} style={colorStyle}>Lower Case</button>
+                <button onClick={titleCase} style={colorStyle}>Title case</button>
+                <button onClick={copyText} style={colorStyle}>Copy Text</button>
+                <button onClick={clear} style={colorStyle}>Clear</button>
             </div>
         </div>
-        <div className='container'>
+        <div className='container' style={myStyle}>
                 <div className='count'>
                     <p>Number of Words: {text.split(" ").length}</p>
                     <p>Number of Characters: {text.length}</p>
@@ -114,7 +132,7 @@ export default function Notepad() {
                 </div>
                 <div className='preview'>
                     <h2>Preview</h2>
-                    <p>{text}</p>
+                    <p>{text.length>0?text:"Enter Some text to Preview"}</p>
                 </div>
         </div>
         </>
