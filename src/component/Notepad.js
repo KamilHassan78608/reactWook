@@ -30,11 +30,13 @@ export default function Notepad(props) {
     const douper = () => {
         const newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to upper Case", "success")
     }
 
     const dolower = () => {
         const newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to lower Case", "success")
     }
 
     const titleCase = () => {
@@ -44,15 +46,18 @@ export default function Notepad(props) {
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
         setText(newText);
+        props.showAlert("Converted to title Case", "success")
     }
 
     const clear = () => {
         const newText = "";
         setText(newText);
+        props.showAlert("NotePad is Clear", "success")
     }
 
     const copyText = () => {
         navigator.clipboard.writeText(text)
+        props.showAlert("Copy to Clip Boared", "success")
     }
     
 
@@ -123,8 +128,6 @@ export default function Notepad(props) {
                 <button onClick={copyText} style={colorStyle}>Copy Text</button>
                 <button onClick={clear} style={colorStyle}>Clear</button>
             </div>
-        </div>
-        <div className='container' style={myStyle}>
                 <div className='count'>
                     <p>Number of Words: {text.split(" ").length}</p>
                     <p>Number of Characters: {text.length}</p>
