@@ -1,0 +1,21 @@
+.features-section {
+    padding: 40px 20px;
+    background-color: #f1f1f1;
+    color: #333;
+  }
+  
+  .features-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .features-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .features-section li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  

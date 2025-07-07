@@ -5,7 +5,7 @@ export default function Alert({ alert, onClose }) {
 
     useEffect(() => {
         if (alert) {
-            setVisible(true);
+            setVisible(true); 
         }
     }, [alert, onClose]);
 

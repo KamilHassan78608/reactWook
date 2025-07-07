@@ -1,9 +1,16 @@
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from './component/Navbar';
 import Notepad from './component/Notepad';
 import Alert from './component/Alert';
+import About from './component/About';
+import Feature from './component/Feature';
+import Project from './component/Project';
+
+
 
 import './App.css';
-import { useState } from 'react';
 
 function App() {
   const [mode, setMode] = useState(true);
@@ -12,7 +19,7 @@ function App() {
   const showAlert = (message, type) => {
     setAlert({ msg: message, type: type });
     setTimeout(() => {
-      setAlert(null)
+      setAlert(null);
     }, 3000);
   };
 
@@ -33,11 +40,16 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <Alert alert={alert} onClose={handleCloseAlert} />
       <Navbar mode={mode} enabaleMode={enabaleMode} />
-      <Notepad mode={mode} showAlert={showAlert}/>
-    </>
+      <Routes>
+        <Route path="/Home" element={<Notepad mode={mode} showAlert={showAlert} />} />
+        <Route path='/Feature' element={<Feature />}/>
+        <Route path='/Project' element={<Project />}/>
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 
